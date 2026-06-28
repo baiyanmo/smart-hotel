@@ -1,0 +1,7 @@
+.me-page { padding-top:24rpx; }
+.user-card { display:flex; flex-direction:column; align-items:center; padding:40rpx; margin-bottom:24rpx; }
+.user-avatar { font-size:72rpx; margin-bottom:16rpx; }
+.user-name { font-size:34rpx; font-weight:600; color:#e0f7fa; }
+.user-role { font-size:26rpx; color:rgba(0,255,255,0.4); margin-top:4rpx; }
+.menu-item { display:flex; justify-content:space-between; align-items:center; padding:28rpx 32rpx; font-size:30rpx; color:#e0f7fa; }
+.arrow { color:rgba(0,255,255,0.3); font-size:32rpx; }

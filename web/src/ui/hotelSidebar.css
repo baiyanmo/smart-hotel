@@ -1,0 +1,206 @@
+#hotel-sidebar {
+  position: fixed;
+  left: 0;
+  top: 38px;
+  bottom: 0;
+  width: 260px;
+  z-index: 15;
+  background: rgba(15, 18, 35, 0.68);
+  backdrop-filter: blur(14px);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  color: #ccd;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px;
+  gap: 14px;
+  user-select: none;
+  overflow-y: auto;
+}
+
+#hotel-sidebar .panel {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#hotel-sidebar .panel-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #889;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ---------- 天气 ---------- */
+#hotel-sidebar .weather-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+#hotel-sidebar .weather-temp {
+  font-size: 32px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+}
+
+#hotel-sidebar .weather-desc {
+  font-size: 13px;
+  color: #aab;
+}
+
+#hotel-sidebar .weather-city {
+  font-size: 12px;
+  color: #889;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#hotel-sidebar .weather-extra {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #889;
+}
+
+#hotel-sidebar .weather-extra span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ---------- 住房 ---------- */
+#hotel-sidebar .room-panel .panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #889;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* C207 加粗放大 */
+#hotel-sidebar .room-panel .room-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+  text-transform: none;
+}
+
+#hotel-sidebar .room-stats {
+  display: flex;
+  gap: 8px;
+}
+
+#hotel-sidebar .room-stat {
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 指示灯 */
+#hotel-sidebar .stat-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#hotel-sidebar .stat-dot.red {
+  background: #ff4444;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.7);
+}
+
+#hotel-sidebar .stat-dot.green {
+  background: #4ecdc4;
+}
+
+#hotel-sidebar .stat-dot.green.off {
+  background: rgba(78, 205, 196, 0.2);
+  box-shadow: none;
+}
+
+#hotel-sidebar .stat-dot.yellow {
+  background: #f0c040;
+}
+
+#hotel-sidebar .stat-dot.yellow.off {
+  background: rgba(240, 192, 64, 0.2);
+  box-shadow: none;
+}
+
+#hotel-sidebar .room-stat .stat-label {
+  font-size: 10px;
+  color: #889;
+}
+
+#hotel-sidebar .room-stat .stat-num {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+#hotel-sidebar .room-stat.available .stat-num { color: #4ecdc4; }
+#hotel-sidebar .room-stat.occupied .stat-num { color: #ff6b6b; }
+#hotel-sidebar .room-stat.cleaning .stat-num { color: #f0c040; }
+
+/* ---------- 灯光 ---------- */
+#hotel-sidebar .light-dots {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+#hotel-sidebar .light-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#hotel-sidebar .light-dot.active {
+  background: #ffe08a;
+  border-color: #ffc53d;
+  box-shadow: 0 0 12px rgba(255, 197, 61, 0.5);
+}
+
+#hotel-sidebar .light-slider {
+  width: 100%;
+  accent-color: #ffc53d;
+  margin: 0;
+}
+
+#hotel-sidebar .light-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #889;
+  margin-top: 4px;
+}

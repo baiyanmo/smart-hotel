@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/chat/index",
+    "pages/rooms/index",
+    "pages/room-detail/index",
+    "pages/orders/index",
+    "pages/me/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0a1628",
+    "navigationBarTitleText": "智慧酒店",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7f8c8d",
+    "selectedColor": "#00e5ff",
+    "backgroundColor": "#0a1628",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页", "iconPath": "images/home.png", "selectedIconPath": "images/home-active.png" },
+      { "pagePath": "pages/rooms/index", "text": "房间", "iconPath": "images/room.png", "selectedIconPath": "images/room-active.png" },
+      { "pagePath": "pages/orders/index", "text": "订单", "iconPath": "images/order.png", "selectedIconPath": "images/order-active.png" },
+      { "pagePath": "pages/me/index", "text": "我的", "iconPath": "images/me.png", "selectedIconPath": "images/me-active.png" }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

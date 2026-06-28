@@ -1,0 +1,12 @@
+<view class="container me-page">
+  <view class="user-card card" wx:if="{{userInfo}}">
+    <view class="user-avatar">👤</view>
+    <view class="user-name">{{userInfo.username}}</view>
+    <view class="user-role">{{userInfo.role === 'admin' ? '管理员' : '普通用户'}}</view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item card">📋 我的订单<text class="arrow">›</text></view>
+    <view class="menu-item card" bindtap="onLogout">🚪 退出登录<text class="arrow">›</text></view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<view class="container chat-page">
+  <scroll-view id="chatList" class="chat-list" scroll-y enhanced show-scrollbar="{{false}}">
+    <block wx:for="{{messages}}" wx:key="index">
+      <view class="msg-row {{item.role === 'user' ? 'msg-user' : 'msg-ai'}}">
+        <view class="msg-bubble {{item.role}}">
+          <text>{{item.content}}</text>
+        </view>
+        <view class="msg-time">{{item.time}}</view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="chat-input-bar">
+    <view
+      class="voice-btn {{isRecording ? 'recording' : ''}}"
+      bindtouchstart="onStartRecord"
+      bindtouchend="onEndRecord"
+      bindtouchcancel="onEndRecord"
+    >{{recordingText}}</view>
+    <input
+      class="chat-input"
+      placeholder="输入消息..."
+      placeholder-class="input-placeholder"
+      value="{{message}}"
+      bindinput="onInput"
+      confirm-type="send"
+      bindconfirm="onSend"
+    />
+    <view class="send-btn" bindtap="onSend">发送</view>
+  </view>
+</view>

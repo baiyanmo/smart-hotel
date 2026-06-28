@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智慧酒店 · AI 管家</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0f1223; }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* ---------- 标题栏 ---------- */
+    #top-bar {
+      height: 38px;
+      flex-shrink: 0;
+      background: rgba(20, 24, 45, 0.75);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 20;
+      -webkit-app-region: drag;
+    }
+    #top-bar .title {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      color: #889;
+      letter-spacing: 0.04em;
+    }
+    #top-bar .title b { color: #ccd; }
+
+    #top-bar .win-btns {
+      display: flex;
+      gap: 8px;
+      -webkit-app-region: no-drag;
+    }
+    #top-bar .win-btns span {
+      font-size: 14px;
+      color: #667;
+      cursor: default;
+      line-height: 1;
+    }
+    #top-bar .win-btns span:hover { color: #ccd; }
+
+    /* ---------- 主体区 ---------- */
+    #main-area {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---------- Live2D 展示区 ---------- */
+    #live2d-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #1a1a2e;
+      margin-left: 260px;
+    }
+    #live2d-container canvas {
+      display: block;
+    }
+
+    /* 灯光 overlay — 盖在 Canvas 上方，默认全亮(透明) */
+    #light-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: #000;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 5;
+    }
+
+    /* ---------- 底部提示 ---------- */
+    #info {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.45);
+      color: #888;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      pointer-events: none;
+      font-family: system-ui, sans-serif;
+      z-index: 10;
+      transition: opacity 2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 标题栏 -->
+    <div id="top-bar">
+      <span class="title">🏨 <b>智慧酒店</b> · AI 管家</span>
+      <div class="win-btns">
+        <span>─</span><span>□</span><span>✕</span>
+      </div>
+    </div>
+
+    <!-- 主体 -->
+    <div id="main-area">
+      <!-- Live2D 区 -->
+      <div id="live2d-container">
+        <div id="light-overlay"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="info">🖱 拖拽移动 | 滚轮缩放 | 点击互动 | 1-9 动作 Q-P 表情</div>
+
+  <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
