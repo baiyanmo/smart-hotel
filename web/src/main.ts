@@ -26,7 +26,7 @@ async function main() {
   const app = new Application({
     width: container.clientWidth,
     height: container.clientHeight,
-    backgroundColor: 0x1a1a2e,
+    backgroundColor: 0x1a1a2e, // 暂不需要背景图片
     resolution: window.devicePixelRatio || 2,
     autoDensity: true,
   })
@@ -43,7 +43,7 @@ async function main() {
   let model: Live2DModel
   try {
     model = await loadDefaultModel(app)
-    infoEl.textContent = '🖱 拖拽移动 | 滚轮缩放 | 点击互动 | 1-9 动作 Q-P 表情'
+    infoEl.textContent = '🖱 拖拽移动 | 滚轮缩放 | 点击互动 | 1-9 动作 Q-P 表情 | Shift 第2页'
   } catch (err) {
     console.error('[live2d] error:', err)
     infoEl.textContent = '❌ 模型加载失败: ' + String(err)
@@ -63,11 +63,11 @@ async function main() {
   // ---- 聊天对话框 ----
   const chat = new ChatDialog({
     onEmotion(name: string) {
-      try { model.expression(name) } catch (_) { /* 忽略不存在的表情 */ }
+      try { model.expression(name) } catch (_) {}
     },
     onAction(name: string) {
       if (name === 'idle') return
-      try { model.motion(name) } catch (_) { /* 忽略不存在的动作 */ }
+      try { model.motion(name) } catch (_) {}
     },
     onWeatherData(data) {
       sidebar.setWeatherCity(data.city)
@@ -156,6 +156,12 @@ function setupKeyboard(model: Live2DModel, infoEl: HTMLElement) {
 
     if (e.key >= '1' && e.key <= '9') {
       const idx = Number(e.key) - 1
+      // 按键 3-9 映射溢出表情 (第21~27个)
+      if (idx >= 2 && idx - 2 + 20 < exprList.length) {
+        model.expression(exprList[idx - 2 + 20])
+        infoEl.textContent = `😊 表情: ${exprList[idx - 2 + 20]}`
+        return
+      }
       if (idx < motionList.length) {
         const { group, index } = motionList[idx]
         model.motion(group, index)
@@ -165,9 +171,10 @@ function setupKeyboard(model: Live2DModel, infoEl: HTMLElement) {
     }
 
     const exprIdx = 'qwertyuiop'.indexOf(e.key.toLowerCase())
-    if (exprIdx >= 0 && exprIdx < exprList.length) {
-      model.expression(exprList[exprIdx])
-      infoEl.textContent = `😊 表情: ${exprList[exprIdx]}`
+    const offset = e.shiftKey ? 10 : 0
+    if (exprIdx >= 0 && exprIdx + offset < exprList.length) {
+      model.expression(exprList[exprIdx + offset])
+      infoEl.textContent = `😊 表情: ${exprList[exprIdx + offset]}`
       return
     }
 

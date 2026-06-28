@@ -142,10 +142,18 @@ export class ControlPanel {
 
     if (expressionNames.length) {
       const keys = 'QWERTYUIOP'.split('')
-      const items = expressionNames.slice(0, 10)
+      const page1 = expressionNames.slice(0, 10)
+      const page2 = expressionNames.slice(10, 20)
+
       html += '<div class="kb-group">😊 表情 | '
-      html += items.map((name, i) => `<kbd>${keys[i]}</kbd> ${name}`).join(' &nbsp;')
+      html += page1.map((name, i) => `<kbd>${keys[i]}</kbd> ${name}`).join(' &nbsp;')
       html += '</div>'
+
+      if (page2.length) {
+        html += '<div class="kb-group">😊 表情 Shift+ | '
+        html += page2.map((name, i) => `<kbd>Shift+${keys[i]}</kbd> ${name}`).join(' &nbsp;')
+        html += '</div>'
+      }
     }
 
     html += '<div class="kb-group"><kbd>0</kbd> 停止 / 重置表情</div>'

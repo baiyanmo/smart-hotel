@@ -23,3 +23,5 @@ class ChatOut(BaseModel):
     content: str
     model: Optional[str] = None
     error: Optional[str] = None
+    emotion: Optional[str] = None   # Live2D 表情
+    action: Optional[str] = None    # Live2D 动作

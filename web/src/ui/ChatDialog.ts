@@ -107,12 +107,12 @@ export class ChatDialog {
     try {
       const data = await sendChat([{ role: 'user', content: text }])
 
-      // 替换 "..." 为实际回复
-      thinkingEl.querySelector('.msg-text')!.textContent = data.content
+      // 表情 / 动作 — 先于内容渲染，防止 passthrough 时表情被等待
+      if (data.emotion) this.callbacks.onEmotion?.(data.emotion)
+      if (data.action) this.callbacks.onAction?.(data.action)
 
-      // 表情 / 动作（如有）
-      // if (data.emotion) this.callbacks.onEmotion?.(data.emotion)
-      // if (data.action) this.callbacks.onAction?.(data.action)
+      // 替换 "..." 为实际回复
+      thinkingEl.querySelector('.msg-text')!.textContent = data.content || '(AI 回复为空)'
 
       // 天气（如有）
       // if (data.weather_data) this.callbacks.onWeatherData?.(data.weather_data)
