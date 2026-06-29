@@ -31,6 +31,19 @@ export function fetchWeather(city = '邯郸'): Promise<WeatherData> {
   return request<WeatherData>(`/weather?city=${encodeURIComponent(city)}`)
 }
 
+// --- TTS 语音合成 ---
+
+export function fetchTTS(text: string): Promise<ArrayBuffer> {
+  return fetch(BASE + '/tts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text }),
+  }).then(resp => {
+    if (!resp.ok) throw new Error('TTS failed')
+    return resp.arrayBuffer()
+  })
+}
+
 // --- 聊天 ---
 
 export interface ChatResponse {
